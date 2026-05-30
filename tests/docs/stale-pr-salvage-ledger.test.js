@@ -58,6 +58,7 @@ test('stale PR salvage ledger preserves representative source attribution', () =
     '#1493',
     '#1528/#1529/#1547',
     '#1603',
+    '#1658',
     '#1659',
     '#1674',
     '#1687',
@@ -79,12 +80,17 @@ test('stale PR salvage ledger records skipped junk and superseded work', () => {
   assert.ok(source.includes('too low-signal'));
 });
 
-test('stale PR salvage ledger keeps the zh-CN tail manual-review only', () => {
+test('stale PR salvage ledger keeps localization tails manual-review only', () => {
   const source = read('docs/stale-pr-salvage-ledger.md');
 
-  assert.ok(source.includes('Only the #1687 localization tail remains'));
+  assert.ok(source.includes('The remaining plausibly useful backlog is translation/localization work'));
+  assert.ok(source.includes('#1687 zh-CN localization tail'));
+  assert.ok(source.includes('#1609 Persian README translation'));
+  assert.ok(source.includes('#1563 zh-TW README sync'));
   assert.ok(source.includes('translator/manual review'));
+  assert.ok(source.includes('Linear ITO-55'));
   assert.ok(source.includes('Do not import stale top-level docs'));
+  assert.ok(source.includes('not a release-blocking salvage task'));
 });
 
 test('legacy inventory and roadmap link to the durable salvage ledger', () => {
@@ -93,7 +99,10 @@ test('legacy inventory and roadmap link to the durable salvage ledger', () => {
 
   assert.ok(inventory.includes('docs/stale-pr-salvage-ledger.md'));
   assert.ok(roadmap.includes('docs/stale-pr-salvage-ledger.md'));
-  assert.ok(roadmap.includes('#1687 translator/manual'));
+  assert.ok(roadmap.includes('#1687, #1609, #1563, #1564'));
+  assert.ok(roadmap.includes('Linear ITO-55'));
+  assert.ok(roadmap.includes('#1609'));
+  assert.ok(roadmap.includes('no automatic import remains release-blocking'));
 });
 
 test('stale PR salvage ledger records the May 12 gap pass', () => {
@@ -109,7 +118,21 @@ test('stale PR salvage ledger records the May 12 gap pass', () => {
     '#1438',
     '#1504',
     '#1508',
+    '#1563/#1564/#1565',
+    '#1567',
+    '#1570',
+    '#1584',
+    '#1589',
+    '#1594',
+    '#1597',
+    '#1602',
     '#1603',
+    '#1604',
+    '#1609',
+    '#1613',
+    '#1631',
+    '#1648',
+    '#1658',
     '#1693',
   ]) {
     assert.ok(source.includes(pr), `Missing May 12 gap-pass PR ${pr}`);
@@ -119,6 +142,11 @@ test('stale PR salvage ledger records the May 12 gap pass', () => {
   assert.ok(source.includes('already preserved in #1770'));
   assert.ok(source.includes('already preserved in #1769'));
   assert.ok(source.includes('already preserved in #1766'));
+  assert.ok(source.includes('GateGuard subagent file-gate bypass'));
+  assert.ok(source.includes('HTTP MCP reachability handling'));
+  assert.ok(source.includes('current managed installer/profile flow'));
+  assert.ok(source.includes('false-positive proof gate'));
+  assert.ok(source.includes('session_id` from stdin JSON'));
   assert.ok(source.includes('Already present as `skills/redis-patterns/`'));
 });
 

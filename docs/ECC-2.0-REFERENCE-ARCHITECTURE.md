@@ -136,6 +136,13 @@ Repo work:
 - `agentshield`: feed prompt-injection and config-risk findings into regression
   suites.
 
+Current prototype:
+
+- `docs/architecture/evaluator-rag-prototype.md` defines the read-only
+  evaluator/RAG artifact contract.
+- `examples/evaluator-rag-prototype/` records the first scenario spec, trace,
+  report, candidate playbook, and verifier result for stale-PR salvage.
+
 Verification:
 
 - read-only prototype that emits a trace, report, candidate playbook, and
@@ -222,7 +229,8 @@ Required safeguards:
 ## Near-Term Implementation Order
 
 1. Extend the harness adapter matrix and public scorecard onramp.
-2. Add the release/name/plugin publication checklist with evidence fields.
+2. Keep the release/name/plugin publication checklist current with fresh
+   final-commit evidence before rc.1 publication.
 3. Define the HUD/status JSON contract and fixture directory.
 4. Start AgentShield policy schema plus SARIF fixtures.
 5. Audit ECC Tools billing and check-run surfaces.
